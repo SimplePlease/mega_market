@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mega_market:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresserver:5432/mega_market
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    volumes:
+      - ./:/app
+    command: ./mvnw spring-boot:run -Dspring-boot.run.profiles=postgres -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000"
+
+  postgresserver:
+    image: postgres:14.4
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=mega_market
+    volumes:
+      - postgres_data:/var/lib/postgres
+      - postgres_config:/etc/postgres/conf.d
+volumes:
+  postgres_data:
+  postgres_config:
