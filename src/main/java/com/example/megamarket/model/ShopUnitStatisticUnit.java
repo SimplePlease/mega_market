@@ -1,7 +1,5 @@
 package com.example.megamarket.model;
 
-import com.sun.istack.NotNull;
-
 import javax.annotation.Nullable;
 import java.time.LocalDateTime;
 import java.util.UUID;

@@ -2,7 +2,6 @@ package com.example.megamarket.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.istack.NotNull;
 
 import javax.annotation.Nullable;
 import javax.persistence.*;

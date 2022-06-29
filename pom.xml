@@ -16,6 +16,7 @@
     <description>mega-market</description>
     <properties>
         <java.version>17</java.version>
+        <start-class>com.example.megamarket.ServletInitializer</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -58,6 +59,7 @@
     </dependencies>
 
     <build>
+        <finalName>megamarket</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

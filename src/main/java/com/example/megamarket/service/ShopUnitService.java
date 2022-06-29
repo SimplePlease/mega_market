@@ -2,7 +2,6 @@ package com.example.megamarket.service;
 
 import com.example.megamarket.model.ShopUnit;
 import com.example.megamarket.model.ShopUnitImport;
-import com.example.megamarket.model.ShopUnitImportRequest;
 import com.example.megamarket.model.ShopUnitType;
 import com.example.megamarket.repo.ShopUnitRepo;
 import org.springframework.stereotype.Service;
@@ -130,18 +129,15 @@ public class ShopUnitService {
                 root = node;
             } else {
                 ShopUnit parent = node.getParent();
-                assert parent != null;
                 parent.addToChildren(node);
             }
         }
-        assert root != null;
         calcPriceInSubtree(root);
         return root;
     }
 
     private TotalPriceWithCount calcPriceInSubtree(ShopUnit node) {
         if (node.getType() == ShopUnitType.OFFER) {
-            assert node.getPrice() != null;
             return new TotalPriceWithCount(node.getPrice(), 1);
         }
         TotalPriceWithCount total = new TotalPriceWithCount(0, 0);
